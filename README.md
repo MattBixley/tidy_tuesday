@@ -1,6 +1,7 @@
-[![](https://img.shields.io/github/last-commit/MattBixley/tidy_tuesday.svg)](https://github.com/MattBixley/tidy_tuesday/commits/master)
+[![](https://img.shields.io/github/last-commit/MattBixley/tidy_tuesday.svg)](https://github.com/MattBixley/tidy_tuesday/commits/master) 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://cran.r-project.org/web/licenses/MIT)
 
-![](https://github.com/MattBixley/tidy_tuesday/blob/master/tt_logo.png)
+![](https://github.com/MattBixley/tidy_tuesday/blob/master/resources/tt_logo.png)
 
 #TidyTuesday
 
