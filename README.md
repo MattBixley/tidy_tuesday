@@ -1,4 +1,4 @@
-# Tidy Tuesday
+#TidyTuesday
 
 A weekly social data project in R, the base repo is [HERE](https://github.com/rfordatascience/tidytuesday) and maintaned by [Tom Mock](https://themockup.blog/) (his Blog)
 
