@@ -1,7 +1,6 @@
 [![](https://img.shields.io/github/last-commit/MattBixley/tidy_tuesday.svg)](https://github.com/MattBixley/tidy_tuesday/commits/master)
 
-
-[![](https://github.com/MattBixley/tidy_tuesday/blob/master/tt_logo.png)]
+![](https://github.com/MattBixley/tidy_tuesday/blob/master/tt_logo.png)
 
 #TidyTuesday
 
