@@ -14,7 +14,7 @@ library(extrafont)
 library(fishualize)
 tt_data <- tt_load("2020-09-22")
 
-theme_set(theme_light)
+theme_set(theme_light())
 ```
 
 # Himalayan Peaks
@@ -39,19 +39,34 @@ members <- tt_data$members %>%
 
 How popular is Everest, to climb.
 
-```{r}
+```{r summarise}
 sum_exped <- exped %>%
   group_by(year) %>%
-  # Capitalizing names so they'll look nice in the graph
   summarise(Expeditions = n(),
-            Climbers = sum(members + hired_staff)) %>%
+            Climbers = sum(members + hired_staff),
+            Deaths = sum(member_deaths + hired_staff_deaths)) %>%
   ungroup() %>%
-  # There are implicit zeros, especially before 1950
-  # Use complete() to turn them into explicit zeros
-  complete(year = 1920:2019,
-           fill = list(Expeditions = 0, Climbers = 0)) %>%
-  gather("category", "number", -year)
+  complete(year = 1920:2020,
+           fill = list(Expeditions = 0, Climbers = 0, Deaths = 0)) %>%
+  pivot_longer(Expeditions:Deaths,names_to = "category", values_to = "number")
 
+rate_exped <- exped %>%
+  group_by(year) %>%
+  summarise(Expeditions = n(),
+            Climbers = sum(members + hired_staff),
+            Deaths = sum(member_deaths + hired_staff_deaths)) %>%
+  ungroup() %>%
+  mutate(climbers_exped = Climbers/Expeditions,
+         deaths_exped = Deaths/Expeditions,
+         deaths_climbers = Deaths/Climbers) %>% 
+  complete(year = 1920:2020,
+           fill = list(climbers_exped = 0, deaths_exped = 0, deaths_climbers = 0)) %>%
+  select(year,climbers_exped:deaths_climbers) %>% 
+  pivot_longer(climbers_exped:deaths_climbers,names_to = "category", values_to = "rate")
+
+```
+
+```{r plot}
 sum_exped %>%
   ggplot(aes(year, number, fill = year)) +
   geom_col() +
@@ -63,9 +78,32 @@ sum_exped %>%
   labs(
     title = "Everest's popularity has soared since the 1980s",
     caption = "Source: The Himalayan Database",
-    x = "",
-    y = ""
-  ) +
+    x = "",y = ""
+    ) +
+  theme(
+    legend.position = "none",
+    text = element_text(family = "Bahnschrift"),
+    panel.grid.minor = element_blank(),
+    strip.text = element_text(size = 12, colour = "black"),
+    strip.background = element_blank()
+  )
+```
+
+```{r rates}
+rate_exped %>%
+  ggplot(aes(year, rate, fill = year)) +
+  geom_col() +
+  facet_wrap( ~ category, scales = "free_y") +
+  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  scale_y_continuous(labels = label_comma()) +
+  scale_fill_fish(option = "Pseudocheilinus_tetrataenia",
+                  direction = 1) +
+  labs(
+    title = "Everest's popularity has soared since the 1980s",
+    subtitle = "But Death rates have decreased, both on a per climber and per expedition basis",
+    caption = "Source: The Himalayan Database",
+    x = "",y = ""
+    ) +
   theme(
     legend.position = "none",
     text = element_text(family = "Bahnschrift"),
