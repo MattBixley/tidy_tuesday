@@ -18,7 +18,7 @@ theme_set(theme_light)
 ```
 
 # Himalayan Peaks
-
+[Alex Cookson](https://www.alexcookson.com/post/analyzing-himalayan-peaks-first-ascents/)
 
 ## Data Inspection
 Shows a list of 3 data sets, `peaks, members and expeditions`
