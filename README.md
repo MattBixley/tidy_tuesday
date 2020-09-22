@@ -1,6 +1,8 @@
 [![](https://img.shields.io/github/last-commit/MattBixley/tidy_tuesday.svg)](https://github.com/MattBixley/tidy_tuesday/commits/master)
 
 
+[![](https://github.com/MattBixley/tidy_tuesday/blob/master/tt_logo.png)]
+
 #TidyTuesday
 
 A weekly social data project in R, the base repo is [HERE](https://github.com/rfordatascience/tidytuesday) and maintaned by [Tom Mock](https://themockup.blog/) (his Blog)
