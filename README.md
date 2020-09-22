@@ -1,4 +1,5 @@
 [![](https://img.shields.io/github/last-commit/MattBixley/tidy_tuesday.svg)](https://github.com/MattBixley/tidy_tuesday/commits/master)
+[![](https://codecov.io/gh/MattBixley/tidy_tuesday/branch/master/graph/badge.svg)](https://codecov.io/gh/MattBixley/tidy_tuesday)
 
 #TidyTuesday
 
