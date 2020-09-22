@@ -6,8 +6,8 @@ A weekly data project aimed at the R ecosystem. As this project was borne out of
 
 Nice package to download the weekly data is maintained by [thebioengineer](https://github.com/thebioengineer/tidytuesdayR)
 
-#install.packages("devtools")
-devtools::install_github("thebioengineer/tidytuesdayR")
+`#install.packages("devtools")  
+`devtools::install_github("thebioengineer/tidytuesdayR")`
 
 ## usage
 
