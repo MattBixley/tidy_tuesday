@@ -9,17 +9,40 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidytuesdayR)
+library(skimr)
 
 #tt_data <- tt_load("2020-09-22")
 #tt_data <- tt_load(2020, week = 40)
 
 theme_set(theme_light())
 
-beyonce_lyrics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/beyonce_lyrics.csv')
-taylor_swift_lyrics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/taylor_swift_lyrics.csv')
+beyonce <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/beyonce_lyrics.csv')
+taylor_swift <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/taylor_swift_lyrics.csv')
 sales <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/sales.csv')
 charts <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/charts.csv')
 
+```
 
+```{r}
+sales %>% 
+  skim()
+```
+
+```{r}
+sales %>% 
+  glimpse()
+```
+
+```{r}
+beyonce %>% 
+  count(song_name, sort = T)
+```
+
+```{r sales}
+sales %>% 
+  filter(country == "US") %>% 
+  mutate(title = fct_reorder(title, sales)) %>% 
+  ggplot(aes(sales, title, fill = artist))+
+  geom_col()
 ```
 
